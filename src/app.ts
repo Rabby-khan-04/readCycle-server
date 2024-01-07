@@ -2,11 +2,16 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import httpStatus from "http-status";
 import router from "./app/routes";
+import routeNotFound from "./app/middleware/routeNotFound";
 
 const app: Application = express();
 
+// parsers
 app.use(cors());
 app.use(express.json());
+
+// server routes
+app.use("/api/v1", router);
 
 app.get("/", (req: Request, res: Response) => {
   res.status(httpStatus.OK).json({
@@ -16,6 +21,7 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-app.use("/api/v1", router);
+// api not found handler
+app.use(routeNotFound);
 
 export default app;

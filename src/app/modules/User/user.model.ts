@@ -12,7 +12,7 @@ const nameSchema = new Schema<IName>(
 const passwordHistorySchema = new Schema<IPasswordHistory>(
   {
     password: { type: String, required: [true, "Password is required"] },
-    createdAt: { tyep: Date, required: [true, "Created time is required"] },
+    createdAt: { type: Date, required: [true, "Created time is required"] },
   },
   { _id: false },
 );

@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// Book creation validation schema
 const createBookValidationSchema = z.object({
   body: z.object({
     title: z

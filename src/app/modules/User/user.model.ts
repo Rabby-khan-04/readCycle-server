@@ -32,15 +32,23 @@ const userSchema = new Schema<IUser>(
       required: [true, "Email is required"],
       unique: true,
     },
-    password: { type: String, required: [true, "Password is required"] },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+      select: 0,
+    },
     status: { type: String, default: "active" },
     isDeleted: { type: Boolean, default: false },
     joinedAt: { type: Date },
-    passwordHistory: [passwordHistorySchema],
+    passwordHistory: { type: [passwordHistorySchema], select: 0 },
   },
   {
     timestamps: true,
   },
 );
+
+userSchema.pre("save", async function (next) {
+  next();
+});
 
 export const User = model<IUser>("User", userSchema);

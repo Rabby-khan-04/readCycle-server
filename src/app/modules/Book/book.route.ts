@@ -5,7 +5,7 @@ import { BookValidations } from "./book.validation";
 
 const router: Router = express.Router();
 
-router.use(
+router.post(
   "/create-book",
   validateRequest(BookValidations.createBookValidationSchema),
   BookController.createBook,

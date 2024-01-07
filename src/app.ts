@@ -3,6 +3,7 @@ import cors from "cors";
 import httpStatus from "http-status";
 import router from "./app/routes";
 import routeNotFound from "./app/middleware/routeNotFound";
+import globalErrorHandler from "./app/middleware/globalErrorHandler";
 
 const app: Application = express();
 
@@ -23,5 +24,8 @@ app.get("/", (req: Request, res: Response) => {
 
 // api not found handler
 app.use(routeNotFound);
+
+// Global error handler
+app.use(globalErrorHandler);
 
 export default app;

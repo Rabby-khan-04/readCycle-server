@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { IName, IPasswordHistory, IUser } from "./user.interface";
+import { createHashPassword } from "./user.utils";
 
 const nameSchema = new Schema<IName>(
   {
@@ -48,6 +49,10 @@ const userSchema = new Schema<IUser>(
 );
 
 userSchema.pre("save", async function (next) {
+  const hashedPassword = await createHashPassword(this.password);
+  this.password = hashedPassword;
+  this.passwordHistory = [{ password: hashedPassword, createdAt: new Date() }];
+
   next();
 });
 

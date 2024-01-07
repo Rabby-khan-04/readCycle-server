@@ -2,8 +2,9 @@ import { IUser } from "./user.interface";
 import { User } from "./user.model";
 
 const createUserIntoDB = async (payLoad: IUser) => {
-  const result = await User.create(payLoad);
+  const user = await User.create(payLoad);
 
+  const result = await User.findById(user._id);
   return result;
 };
 

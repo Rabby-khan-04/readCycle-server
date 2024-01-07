@@ -50,18 +50,18 @@ const createBookValidationSchema = z.object({
       })
       .optional()
       .default(false),
-  }),
-  year: z.number({
-    required_error: "Book publish year is required",
-    invalid_type_error: "Book publish year must be number",
-  }),
-  nunberOfPages: z.number({
-    required_error: "Number of pages is required",
-    invalid_type_error: "Number of pages must be number",
-  }),
-  description: z.string({
-    required_error: "Description is required",
-    invalid_type_error: "Description must be number",
+    year: z.number({
+      required_error: "Book publish year is required",
+      invalid_type_error: "Book publish year must be number",
+    }),
+    nunberOfPages: z.number({
+      required_error: "Number of pages is required",
+      invalid_type_error: "Number of pages must be number",
+    }),
+    description: z.string({
+      required_error: "Description is required",
+      invalid_type_error: "Description must be number",
+    }),
   }),
 });
 

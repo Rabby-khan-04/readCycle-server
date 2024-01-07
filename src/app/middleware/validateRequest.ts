@@ -10,7 +10,11 @@ const validateRequest = (schema: ZodSchema) => {
       body: req.body,
     });
 
-    console.log(result);
+    if (result.success) {
+      next();
+    } else {
+      next(result.error);
+    }
   });
 };
 

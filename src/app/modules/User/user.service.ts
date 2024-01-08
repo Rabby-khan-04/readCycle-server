@@ -8,6 +8,7 @@ const createUserIntoDB = async (payLoad: IUser) => {
   return result;
 };
 
+// User Services
 export const UserServices = {
   createUserIntoDB,
 };
